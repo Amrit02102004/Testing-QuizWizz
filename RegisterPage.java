@@ -102,7 +102,7 @@ public class RegisterPage extends JFrame implements ActionListener {
         add(loginButton);
         loginButton.addActionListener(this); // Registering action listener
 
-        backgroundImage = new JLabel(new ImageIcon("background.jpg"));
+        backgroundImage = new JLabel(new ImageIcon("Background.jpg"));
         backgroundImage.setBounds(0, 0, 650, 432);
         add(backgroundImage);
 
