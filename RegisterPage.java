@@ -11,7 +11,7 @@ public class RegisterPage extends JFrame implements ActionListener {
     private JTextField nameField, emailField, phoneField;
     private JComboBox<String> genderComboBox;
     private JPasswordField passwordField, confirmPasswordField;
-    private JButton signUpButton;
+    private JButton signUpButton, loginButton; // Added login button
     private JLabel backgroundImage;
 
     public RegisterPage() {
@@ -90,9 +90,17 @@ public class RegisterPage extends JFrame implements ActionListener {
         signUpButton.setBackground(new Color(51, 204, 255));
         signUpButton.setFont(new Font("Arial", Font.BOLD, 14));
         signUpButton.setForeground(Color.WHITE);
-        signUpButton.setBounds(250, 320, 100, 30);
+        signUpButton.setBounds(150, 320, 100, 30);
         add(signUpButton);
         signUpButton.addActionListener(this); // Registering action listener
+
+        loginButton = new JButton("Login"); // Create login button
+        loginButton.setBackground(new Color(255, 153, 51));
+        loginButton.setFont(new Font("Arial", Font.BOLD, 14));
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setBounds(270, 320, 100, 30);
+        add(loginButton);
+        loginButton.addActionListener(this); // Registering action listener
 
         backgroundImage = new JLabel(new ImageIcon("background.jpg"));
         backgroundImage.setBounds(0, 0, 650, 432);
@@ -118,6 +126,11 @@ public class RegisterPage extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
 
+            Login loginPage = new Login();
+            loginPage.setVisible(true);
+            this.dispose();
+        } else if (e.getSource() == loginButton) { // If login button is clicked
+            // Open login page
             Login loginPage = new Login();
             loginPage.setVisible(true);
             this.dispose();

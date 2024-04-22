@@ -6,12 +6,15 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File;
+import java.awt.Desktop;
 
 public class Login extends JFrame implements ActionListener {
     private JPanel Left;
     private JPanel Right;
     private JButton jButton1;
     private JButton jButton2; // Added SignUp button
+    private JButton openFileButton; // Button to open RegisterPage.java
     private JLabel jLabel1;
     private JLabel jLabel2;
     private JLabel jLabel3;
@@ -42,6 +45,7 @@ public class Login extends JFrame implements ActionListener {
         this.jButton1 = new JButton();
         this.jLabel4 = new JLabel();
         this.jButton2 = new JButton(); // SignUp button
+        this.openFileButton = new JButton("Open RegisterPage.java"); // Button to open RegisterPage.java
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("LOGIN");
@@ -159,6 +163,7 @@ public class Login extends JFrame implements ActionListener {
         this.pack();
         this.jButton1.addActionListener(this); // Add ActionListener to the Login button
         this.jButton2.addActionListener(this); // Add ActionListener to the SignUp button
+        this.openFileButton.addActionListener(this); // Add ActionListener to open RegisterPage.java button
     }
 
     // Method to authenticate user credentials from CSV file
@@ -202,6 +207,14 @@ public class Login extends JFrame implements ActionListener {
             RegisterPage registerPage = new RegisterPage();
             registerPage.setVisible(true);
             this.dispose(); // Close the login window
+        } else if (e.getSource() == openFileButton) { // Open RegisterPage.java button clicked
+            // Open the RegisterPage.java file
+            try {
+                File file = new File("RegisterPage.java");
+                Desktop.getDesktop().open(file);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
